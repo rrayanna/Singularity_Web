@@ -60,14 +60,11 @@
 /*--------------------------------------------------------------
 # General Styling & Shared Classes
 --------------------------------------------------------------*/
-html {
-  height: fit-content;
-}
-
 body {
   color: var(--default-color);
   background-color: var(--background-color);
   font-family: var(--default-font);
+  height: 100%
 }
 
 a {
