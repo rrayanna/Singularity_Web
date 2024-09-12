@@ -102,6 +102,17 @@
   }
   window.addEventListener('load', aosInit);
 
+  var timer = null;
+  window.addEventListener('scroll', function() {
+      if(timer !== null) {
+        clearTimeout(timer);
+      }
+      timer = setTimeout(function() {
+        // console.log("refreshing AOS")
+        AOS.refreshHard()
+      }, 200);
+  }, false);
+
   /**
    * Initiate glightbox
    */
