@@ -2064,6 +2064,18 @@ section,
   color: var(--accent-color);
 }
 
+.service-details .capability-stmnt-btn button[type=submit] {
+  color: var(--contrast-color);
+  background: var(--accent-color);
+  border: 0;
+  padding: 10px 30px;
+  transition: 0.4s;
+  border-radius: 50px;
+}
+
+.service-details .capability-stmnt-btn button[type=submit]:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 25%);
+}
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
