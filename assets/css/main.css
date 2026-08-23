@@ -12,19 +12,119 @@
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
-  --default-font: "Open Sans",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Jost",  sans-serif;
-  --nav-font: "Poppins",  sans-serif;
+  --default-font: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Jost", sans-serif;
+  --nav-font: "Poppins", sans-serif;
+  --background-color: #ffffff;
+  --default-color: #444444;
+  --heading-color: #37517e;
+  --accent-color: #47b2e4;
+  --surface-color: #ffffff;
+  --contrast-color: #ffffff;
+  --border-color: rgba(68, 68, 68, 0.12);
+  --shadow-color: rgba(15, 23, 42, 0.08);
+  --radius: 18px;
+  --container-max-width: 1140px;
+  --transition: 200ms ease;
 }
 
-/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #37517e; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #47b2e4; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-family: var(--default-font);
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg,
+iframe {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover,
+a:focus {
+  color: color-mix(in srgb, var(--accent-color), transparent 25%);
+  outline: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+.btn {
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+  margin: 0 0 1rem;
+}
+
+p {
+  margin: 0 0 1.25rem;
+  line-height: 1.8;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"] {
+  border: none;
+}
+
+.container {
+  width: min(100%, calc(100vw - 2rem));
+  margin-inline: auto;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: var(--container-max-width);
+  }
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
@@ -144,7 +244,7 @@ h6 {
 # Global Header
 --------------------------------------------------------------*/
 .header {
-  --background-color: #3d4d6a;
+  --background-color: #37517e;
   --heading-color: #ffffff;
   color: var(--default-color);
   background-color: var(--background-color);
@@ -189,14 +289,29 @@ h6 {
 }
 
 @media (max-width: 1200px) {
+  .header .container-xl {
+    flex-wrap: nowrap;
+  }
+
   .header .logo {
     order: 1;
+    min-width: 0;
+  }
+
+  .header .logo img {
+    max-height: 30px;
+  }
+
+  .header .logo h1 {
+    font-size: 24px;
+    letter-spacing: 1px;
   }
 
   .header .btn-getstarted {
     order: 2;
     margin: 0 15px 0 0;
-    padding: 6px 15px;
+    padding: 6px 14px;
+    white-space: nowrap;
   }
 
   .header .navmenu {
@@ -204,18 +319,46 @@ h6 {
   }
 }
 
+@media (max-width: 575px) {
+  .header {
+    padding: 12px 0;
+  }
+
+  .header .logo img {
+    max-height: 28px;
+    margin-right: 5px;
+  }
+
+  .header .logo h1 {
+    font-size: 19px;
+  }
+
+  .header .btn-getstarted {
+    font-size: 12px;
+    margin-right: 8px;
+    padding: 6px 10px;
+  }
+
+  .mobile-nav-toggle {
+    font-size: 24px;
+    margin-right: 0;
+  }
+}
+
 /* Index Page Header
 ------------------------------*/
 .index-page .header {
-  --background-color: rgba(255, 255, 255, 0);
+  --background-color: rgba(40, 58, 90, 0.95);
   --heading-color: #ffffff;
   --nav-color: #ffffff;
+  --nav-hover-color: #47b2e4;
+  box-shadow: 0 2px 20px rgba(40, 58, 90, 0.16);
 }
 
 /* Index Page Header on Scroll
 ------------------------------*/
 .index-page.scrolled .header {
-  --background-color: rgba(40, 58, 90, 0.9);
+  --background-color: rgba(40, 58, 90, 0.95);
 }
 
 /*--------------------------------------------------------------
@@ -1996,14 +2139,16 @@ section,
 /*--------------------------------------------------------------
 # Service Details Section
 --------------------------------------------------------------*/
-.service-details .services-list {
+.service-details .services-list,
+.services-overview .services-list {
   background-color: var(--surface-color);
   padding: 10px 30px;
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
   margin-bottom: 20px;
 }
 
-.service-details .services-list a {
+.service-details .services-list a,
+.services-overview .services-list a {
   display: block;
   line-height: 1;
   padding: 8px 0 8px 15px;
@@ -2013,23 +2158,42 @@ section,
   transition: 0.3s;
 }
 
-.service-details .services-list a.active {
+.service-details .services-list a.active,
+.services-overview .services-list a.active {
   color: var(--heading-color);
   font-weight: 700;
   border-color: var(--accent-color);
 }
 
-.service-details .services-list a:hover {
+.service-details .services-list a:hover,
+.services-overview .services-list a:hover {
   border-color: var(--accent-color);
+}
+
+.services-overview {
+  overflow: visible;
+}
+
+.services-overview-page .services-list {
+  position: sticky;
+  top: 100px;
+}
+
+.services-overview .service-detail-item {
+  padding: 0 0 60px;
+  scroll-margin-top: 100px;
+}
+
+.services-overview .service-detail-item:last-child {
+  padding-bottom: 0;
 }
 
 .service-details .services-img {
   margin-bottom: 20px;
-  width: 70%;
-  height: 50%; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  height: auto;
+  max-width: 420px;
+  display: block;
 }
 
 .service-details h3 {
@@ -2076,9 +2240,35 @@ section,
 .service-details .capability-stmnt-btn button[type=submit]:hover {
   background: color-mix(in srgb, var(--accent-color), transparent 25%);
 }
-/*--------------------------------------------------------------
-# Starter Section Section
---------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
+
+@media (max-width: 1199px) {
+  .services-overview-page .services-list {
+    position: fixed;
+    top: 66px;
+    left: 0;
+    right: 0;
+    z-index: 996;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 8px 16px;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .services-overview-page .services-list a {
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 10px 12px;
+    border-left: 0;
+    border-bottom: 3px solid color-mix(in srgb, var(--default-color), transparent 70%);
+  }
+
+  .services-overview .col-lg-8 {
+    padding-top: 64px;
+  }
+
+  .services-overview .service-detail-item {
+    scroll-margin-top: 130px;
+  }
 }
